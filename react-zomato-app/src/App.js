@@ -14,6 +14,13 @@ class App extends Component {
     const result = await Services.search();
     this.props.setRestaurants(result.data.restaurants);
   }
+  onChangeHandler=(event)=>{ 
+    const {name,value} = event.target
+    this.setState({
+       [name] : value
+    })
+    console.log(value);
+  }
   render() {
     
     return (
@@ -24,12 +31,12 @@ class App extends Component {
            {/* <ul>
         {this.state.restaurants && this.state.restaurants.map(rest => <li>{rest.restaurant.cuisines}</li>) }
       </ul> */}
-            <Header restaurants={this.props.restaurants} />
+            <Header restaurants={this.props.restaurants} onChangeHandler={this.onChangeHandler}/>
             <Footer />
           </>
         ) : (
           <>
-            <Header restaurants={this.props.restaurants} />
+            <Header restaurants={this.props.restaurants} onChangeHandler={this.onChangeHandler} />
             <Footer />
           </>
         )}

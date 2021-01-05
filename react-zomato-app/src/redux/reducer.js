@@ -3,7 +3,8 @@ export default (state = {restaurants: []}, action) => {
       case 'restaurants/set':
         return {
             ...state,
-            restaurants: action.payload
+            restaurants: action.payload,
+            cuisines:action.payload
         }
       default:
         return state
