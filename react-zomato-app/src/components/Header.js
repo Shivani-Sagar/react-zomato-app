@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "../index.css";
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+    console.log("yo", props.restaurants);
+  }
   render() {
     return (
       <div>
@@ -33,21 +37,35 @@ export default class Header extends Component {
           </div>
         </div>
         <section id="second-section">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-3">
-                <div class="card">
-                  <img
-                    src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpapersdsc.net%2Fwp-content%2Fuploads%2F2016%2F09%2FJunk-Food-Computer-Wallpaper.jpg&f=1&nofb=1"
-                    height="100%"
-                    width="100%"
-                    alt="img"
-                  />
-                  <div class="card-bottom">
-                    <p class="h4 m-0 mt-2 text-center">Order Online</p>
-                  </div>
-                </div>
-              </div>
+        <div class="container">
+                      <div class="row">
+                {this.props.restaurants &&
+                  this.props.restaurants.map((item, i) => {
+                    return (
+                   
+                        <div class="col-md-3">
+                      <div class="card">
+                        <img
+                          src={item.restaurant.thumb ? item.restaurant.thumb : "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpapersdsc.net%2Fwp-content%2Fuploads%2F2016%2F09%2FJunk-Food-Computer-Wallpaper.jpg&f=1&nofb=1" }
+                          height="100%"
+                          width="100%"
+                          alt="img"
+                        />
+
+                        <div class="card-bottom">
+                          <p class="h4 m-0 mt-2 text-center">
+                            {item.restaurant.cuisines}
+                          </p>
+                        </div>
+                      </div>
+                      </div>
+                     
+                    );
+                  })}
+                   </div>
+                      </div>
+              {/* </div>
+
               <div class="col-md-3">
                 <div class="card">
                   <img
@@ -88,7 +106,7 @@ export default class Header extends Component {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </section>
 
         <section id="popular-locations">
