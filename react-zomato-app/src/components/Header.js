@@ -1,14 +1,14 @@
 import React, { Component } from "react";
+
 import "../index.css";
+import * as Services from "../services/service"
+
 export default class Header extends Component {
   constructor(props) {
     super(props);
-    console.log("yo", props.restaurants);
+    console.log("yo", props.restaurants,props.searchCuisines);
   }
-  onChange = (e) => {
-    console.log(e.target.value);
-    this.setState({ [e.target.name]: e.target.value });
-  };
+ 
   render() {
     return (
       <div>
@@ -31,6 +31,7 @@ export default class Header extends Component {
               <p className="zomato">Zomato</p>
             </div>
             <div className="d-flex justify-content-center mt-4">
+            
               <input
                 type="text"
                 placeholder="Search for dishes or cuisines..."
@@ -39,7 +40,8 @@ export default class Header extends Component {
                
                 onChange={this.props.onChangeHandler}
               />
-              <button className="search-btn" onCLick={() =>this.props.restaurants} >Search</button>
+              <button className="search-btn"  onClick={this.props.searchCuisines}>Search</button>
+         
             </div>
           </div>
         </div>
@@ -92,7 +94,7 @@ export default class Header extends Component {
                         <p class="m-0 ml-3 h5">
                           {item.restaurant.location.locality}
                         </p>
-                        <i class="fa fa-arrow-right ml-auto mr-4"></i>
+                       <a href={item.restaurant.menu_url}> <i class="fa fa-arrow-right ml-auto mr-4"></i></a>
                       </div>
                     </div>
                   );

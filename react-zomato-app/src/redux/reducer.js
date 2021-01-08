@@ -4,6 +4,12 @@ export default (state = {restaurants: []}, action) => {
         return {
             ...state,
             restaurants: action.payload,
+            
+        }
+      case 'cuisines/set':
+        return {
+            ...state,
+           
             cuisines:action.payload
         }
       default:
